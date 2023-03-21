@@ -67,3 +67,4 @@ class CreateMotocicleta(graphene.Mutation):
 class Mutation(graphene.ObjectType):
     create_motocicleta = CreateMotocicleta.Field()
 
+schema = graphene.Schema(query=Query, mutation=Mutation)
