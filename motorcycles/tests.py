@@ -12,14 +12,14 @@ from motorcycles.models import Motocicleta
 
 MOTOCICLETAS_QUERY = '''
  {
-   motocicletas {
+   motorcycles {
      id
      description
      marca
      modelo
      motor
-     consumo_g
-     capacidad_g
+     consumog
+     capacidadg
      cilindraje
      version
      color
@@ -38,9 +38,9 @@ class  MotocicletaTestCase(GraphQLTestCase):
             MOTOCICLETAS_QUERY,
         )
         content = json.loads(response.content)
-        #print(content)
+        print(content)
         # This validates the status code and if you get errors
         self.assertResponseNoErrors(response)
         print ("query motocicleta results ")
         print (content)
-        assert len(content['data']['motocicletas']) ==2
+        assert len(content['data']['motorcycles']) ==2
