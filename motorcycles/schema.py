@@ -20,8 +20,8 @@ class CreateMotocicleta(graphene.Mutation):
     marca = graphene.String()
     modelo = graphene.String()
     motor = graphene.String()
-    consumo_g = graphene.Int()
-    capacidad_g = graphene.Float()
+    consumog = graphene.Int()
+    capacidadg = graphene.Float()
     cilindraje = graphene.Int()
     version = graphene.String()
     color = graphene.String()
@@ -35,8 +35,8 @@ class CreateMotocicleta(graphene.Mutation):
         marca = graphene.String()
         modelo = graphene.String()
         motor = graphene.String()
-        consumo_g = graphene.Int()
-        capacidad_g = graphene.Float()
+        consumog = graphene.Int()
+        capacidadg = graphene.Float()
         cilindraje = graphene.Int()
         version = graphene.String()
         color = graphene.String()
@@ -45,8 +45,8 @@ class CreateMotocicleta(graphene.Mutation):
         
 
 
-    def mutate(self, info, marca, modelo, motor, consumo_g, capacidad_g, cilindraje, version, color, precio, description):
-        motocicleta = Motocicleta(marca=marca, modelo=modelo, motor=motor, consumo_g=consumo_g, capacidad_g=capacidad_g, cilindraje=cilindraje, version=version, color=color, precio=precio, description=description)
+    def mutate(self, info, marca, modelo, motor, consumog, capacidadg, cilindraje, version, color, precio, description):
+        motocicleta = Motocicleta(marca=marca, modelo=modelo, motor=motor, consumog=consumog, capacidadg=capacidadg, cilindraje=cilindraje, version=version, color=color, precio=precio, description=description)
         motocicleta.save()
 
         return CreateMotocicleta(
@@ -54,8 +54,8 @@ class CreateMotocicleta(graphene.Mutation):
             marca=motocicleta.marca,
             modelo=motocicleta.modelo,
             motor=motocicleta.motor,
-            consumo_g=motocicleta.consumo_g,
-            capacidad_g=motocicleta.capacidad_g,
+            consumog=motocicleta.consumog,
+            capacidadg=motocicleta.capacidadg,
             cilindraje=motocicleta.cilindraje,
             version=motocicleta.version,
             color=motocicleta.color,
