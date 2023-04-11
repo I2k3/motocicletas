@@ -27,6 +27,13 @@ MOTOCICLETAS_QUERY = '''
    }
  }
 '''
+CREATE_MOTOCICLETAS_MUTATION = '''
+ mutation createMotocicletasMutation( $description: String, $marca: String, $modelo: String, $motor: String, $consumog : Int , $capacidadg: Float, $cilindraje: Int, $version: String, $color : String, $precio : Decimal) {
+     createMotocicleta( description: $description, marca: $marca, modelo: $modelo, motor: $motor, consumog: $consumog, capacidadg: $capacidadg, cilindraje: $cilindraje, version: $version, color: $color,precio: $precio) {
+      modelo
+     }
+ }
+'''
 class  MotocicletaTestCase(GraphQLTestCase):
     GRAPHQL_SCHEMA = schema
     def setUp(self):
@@ -44,3 +51,16 @@ class  MotocicletaTestCase(GraphQLTestCase):
         print ("query motocicleta results ")
         print (content)
         assert len(content['data']['motorcycles']) ==2
+        
+    def test_createMotocicletas_mutation(self):
+
+        response = self.query(
+            CREATE_MOTOCICLETAS_MUTATION,
+            variables={ 'description': 'Motocicleta 250 blue core, 4tiempos con enfriada de aire', 'marca': 'Yamaha','modelo': 'Fz25', 'motor': 'Blue Core 250 Full Inyection', 'consumog':3,'capacidadg': 14,'cilindraje': 250, 'version':'Fz','color':'Azul tipo Diamante', 'precio':80000.00}
+        )
+        print('mutation ')
+        print(response)
+        content = json.loads(response.content)
+        print(content)
+        self.assertResponseNoErrors(response)
+        self.assertDictEqual({"createMotocicleta": {"modelo": "Fz25"}}, content['data']) 
