@@ -46,7 +46,11 @@ jobs:
       run: cat .env
     - name: run tests
       run: python manage.py test --settings=settings.testing -v 3 --keepdb
-
-      
-      
-
+    - uses: okteto/context@2.7.0
+      with:
+       token: ${{ secrets.OKTETO_TOKEN }}
+    - name: Deploy
+      uses: okteto/pipeline@2.7.0
+      with:
+          name: i2k3 # cambiar por su namespace
+          timeout: 5m
