@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: i2k3-config
+ labels:
+   app: postgres
+data:
+ PROD_SECRET_KEY : I2k3
+ PROD_DATABASE : qofrzafd
+ PROD_USER : qofrzafd
+ PROD_PASSWORD : U3jk2BT6cknnqjZT31m_d4UbHg5mou_L
+ PROD_HOST : isilo.db.elephantsql.com
+ PROD_PORT : "5432"
